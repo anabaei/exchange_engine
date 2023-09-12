@@ -105,11 +105,10 @@ Your purchase of 50 sell has been successfully completed.
 * To handle error I use logger file, we can log level and log format the errors and save into log file
 
 ## Areas to improve
-* Orders type could be `limit`, `stop-loss` and `take-profit` and add appropriate logic for each
-* Take advantage of `grenache-nodejs-ws` 
-* Announce more workers like currency updates
-* Encryp & Decrypt hashed keys
-* Add authentication and userId on orders
-* Devide orders into smaller pieces and allow partial fill 
-* Add `TTL` on orders and handle the logic 
- 
+* Orders with types like limit, stop-loss, and take-profit, could have specific logic
+* Use grenache-nodejs-ws library to enhance communication 
+* Consider adding more worker nodes for tasks such as currency updates to improve system performance.
+* Decrypt hashed keys
+* Add authentication and associating user IDs with orders.
+* Divide orders into smaller segments and allow for partial order execution.
+* Introduce a "Time To Live" (TTL) concept for orders and develop the necessary logic to handle orders 
