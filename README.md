@@ -1,7 +1,5 @@
 # Simplified Distributed Exchange
 
-## Running the Application
-
 ### Installation
 Install the required dependencies:
 ```bash
@@ -102,3 +100,6 @@ Your sell order for 50 BTC  has been added to the order book. You are in positio
 Your purchase of 50 sell has been successfully completed.
 ```
 </details>
+
+## Errors & Logs
+* To handle error I use logger file, we can log level and log format the errors and save into log file

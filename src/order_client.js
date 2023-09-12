@@ -1,6 +1,7 @@
 'use strict';
 const submitOrder = require('./utils/submitOrder');
 const submitOrdersWithRetry = require('./utils/submitOrderWithRetry');
+const logger = require('./logger');
 
 async function main() {
   // Example orders
@@ -45,7 +46,7 @@ async function main() {
     const results = await submitOrdersWithRetry(submitOrder, orders, 5, 1000);
     console.log('Response of the order:', results);
   } catch (error) {
-    console.error('Max retries reached. Error:', error.message);
+    logger.error('Max retries reached. Error:', error.message);
   }
 }
 

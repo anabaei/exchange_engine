@@ -3,6 +3,7 @@
 const { PeerRPCServer } = require('grenache-nodejs-http');
 const Link = require('grenache-nodejs-link');
 const Mutex = require('async-mutex').Mutex;
+const logger = require('./logger');
 
 const OrderService = require('./services/OrderService');
 const orderService = new OrderService();
@@ -40,7 +41,7 @@ service.on('request', async (rid, key, payload, handler) => {
       release();
     }
   } catch (error) {
-    console.error('Error processing order:', error);
+    logger.error('Error processing order:', error);
     handler.reply({ error: 'Order processing error' });
   }
 });
