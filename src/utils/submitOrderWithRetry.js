@@ -1,4 +1,4 @@
-const {exponentialRetry} = require('./retry')
+const {exponentialRetry} = require('./exponentialRetry')
 
 function submitOrdersWithRetry(submitOrder,orders, maxRetries, retryDelay) {
     // Create an array of promises for submitting orders with retry
