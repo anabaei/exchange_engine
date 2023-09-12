@@ -5,12 +5,12 @@ Install the required dependencies:
 npm i
 ```
 ## Running 
-* To run the server and client components, follow these steps (start with the server):
 
 ```bash
 grape --dp 20001 --aph 30001 --bn '127.0.0.1:20002'
 grape --dp 20002 --aph 40001 --bn '127.0.0.1:20001'
 ```
+* To run the server and client components, follow these steps (start with the server):
 * Start the server:
 ```bash
 npm run start:server
