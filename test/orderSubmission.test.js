@@ -3,7 +3,7 @@ const sinon = require("sinon"); // For mocking functions
 
 // Import the functions you want to test
 const generateRandomOrder = require("../src/utils/randomOrderGenerator");
-const submitOrdersWithRetry = require("../src/submitOrderWithRetry");
+const submitOrdersWithRetry = require("../src/utils/submitOrderWithRetry");
 
 // Import the submitOrder function and mock it
 const submitOrder = sinon.stub();

@@ -1,6 +1,6 @@
 'use strict';
 const submitOrder = require('./utils/submitOrder');
-const submitOrdersWithRetry = require('./submitOrderWithRetry');
+const submitOrdersWithRetry = require('./utils/submitOrderWithRetry');
 
 async function main() {
   // Example orders

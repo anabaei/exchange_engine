@@ -1,6 +1,5 @@
 # Simplified Distributed Exchange
 
-
 ## Running the Application
 
 ### Installation
@@ -11,6 +10,10 @@ npm i
 ## Running Server and Client
 * To run the server and client components, follow these steps (start with the server):
 
+```bash
+grape --dp 20001 --aph 30001 --bn '127.0.0.1:20002'
+grape --dp 20002 --aph 40001 --bn '127.0.0.1:20001'
+```
 * Start the server:
 ```bash
 npm run start:server
@@ -24,8 +27,33 @@ npm run start:client
 ```bash
 npm test
 ```
-### Addressing Race Conditions
-Race conditions can create issues in a distributed exchange system. This project addresses them in two ways:
+### Save & Search
+* It save orders in hash table an instance of `OrderCurrency` class. 
+
+<details>
+     <summary> Details ...</summary>
+
+## Saving Orders in the Hash Table
+
+- Each order is stored in the `orderHashTable` within the `OrderCurrency` class.
+- Every order is assigned a unique hash key based on its characteristics: `side`, `quantity`, and `type`. For instance, "btusell50" signifies a "sell 50 btu" order.
+- Queuing: If a new order arrives with the same key, such as "sell 50 btu," it will join a queue of similar orders.
+
+## Quick Searching with O(1) Complexity
+
+- Searching within the hash table has a time complexity of O(1), indicating high efficiency. You only need to construct a `searchKey` by combining `side`, `quantity`, and `type`.
+- Once a match is found during the search, the order is promptly removed from the `orderHashTable` object.
+
+</details>
+
+### Race Conditions & Fault Tolerance
+* This project address race conditions using  `async-mutex`  and `Async/Await`
+* By creating  `exponentialRetry` function increases the fault tolerance and improve availability 
+
+<details>
+     <summary> Details </summary>
+
+ This project addresses them in two ways:
 
 * 1. Using `async-mutex` for Request Locking and Matching
    - We utilize the `async-mutex` library to implement locks on requests and matching. This ensures that multiple operations don't interfere with each other, enhancing system stability.
@@ -35,6 +63,11 @@ Race conditions can create issues in a distributed exchange system. This project
 
 ### Enhancing Fault Tolerance
 To increase the fault tolerance of the system and ensure high availability while preventing excessive network load due to retry requests, we employ the `submitOrdersWithRetry` function. This function retries order submissions when network or connection issues occur.
+
+</details>
+
+### Orders & Response
+* Orders have strucutred schema and reponses are expected to be in 3 formats
 
 <details>
    <summary> Details </summary>
