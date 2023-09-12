@@ -1,4 +1,4 @@
-# Simplified Distributed Exchange
+## Distributed Exchange
 
 Install the required dependencies:
 ```bash
