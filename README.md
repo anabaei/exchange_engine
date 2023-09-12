@@ -35,3 +35,34 @@ Race conditions can create issues in a distributed exchange system. This project
 
 ### Enhancing Fault Tolerance
 To increase the fault tolerance of the system and ensure high availability while preventing excessive network load due to retry requests, we employ the `submitOrdersWithRetry` function. This function retries order submissions when network or connection issues occur.
+
+<details>
+   <summary> Details </summary>
+
+### Orders
+* Orders should be structured as objects with the following properties:
+```javascript
+   {
+    orderId: 3,
+    symbol: 'ETH', 
+    quantity: 50,
+    price: 2700.00,
+    side: 'sell',
+    orderType: 'market', 
+  }
+```
+### Output
+* The output messages fall into three main categories when no errors occur:
+* 1- Order Successfully Added to Order Book
+```bash
+Your sell  order for 50 ETH has been added to the order book. You are at the front of the queue.
+```
+* 2- Order Added to Queue. This message indicates that your order has been added to a queue, and you're in a specific position within that queue.
+```bash
+Your sell order for 50 BTC  has been added to the order book. You are in position 2 in the queue.
+```
+* 3- Order Matched for Exchange. This message signifies that your order found a match for an exchange, so it didn't go into the queue and was processed immediately.
+```bash
+Your purchase of 50 sell has been successfully completed.
+```
+</details>

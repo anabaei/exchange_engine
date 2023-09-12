@@ -29,8 +29,16 @@ async function main() {
     side: 'sell',
     orderType: 'market', 
   };
+  const order4 = {
+    orderId: 3,
+    symbol: 'ETH', 
+    quantity: 50,
+    price: 2700.00,
+    side: 'sell',
+    orderType: 'market', 
+  };
 
-  const orders = [order1, order2, order3];
+  const orders = [order1, order2, order3, order4];
 
   try {
     // Submit the orders with retry
