@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test": "mocha --exit test/**/*.test.js",
-    "start:server": "node server.js"
+    "start:server": "node ./src/order_server.js",
+    "start:client": "node ./src/order_client.js"
   },
   "dependencies": {
     "async-mutex": "^0.4.0",
