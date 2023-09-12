@@ -27,10 +27,10 @@ npm test
 ### Addressing Race Conditions
 Race conditions can create issues in a distributed exchange system. This project addresses them in two ways:
 
-#### 1. Using `async-mutex` for Request Locking and Matching
+* 1. Using `async-mutex` for Request Locking and Matching
    - We utilize the `async-mutex` library to implement locks on requests and matching. This ensures that multiple operations don't interfere with each other, enhancing system stability.
 
-#### 2. Deploying Async/Await in Order Submission as an Array of Objects
+* 2. Deploying `Async/Await` in Order Submission as an Array of Objects
    - We implement asynchronous processing of orders by submitting them as an array of objects. This approach improves concurrency and helps manage order submissions effectively.
 
 ### Enhancing Fault Tolerance
