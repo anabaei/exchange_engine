@@ -1,11 +1,10 @@
 # Simplified Distributed Exchange
 
-### Installation
 Install the required dependencies:
 ```bash
 npm i
 ```
-## Running Server and Client
+## Running 
 * To run the server and client components, follow these steps (start with the server):
 
 ```bash
@@ -25,7 +24,7 @@ npm run start:client
 ```bash
 npm test
 ```
-## Saving and Searching Orders
+## Saving and Searching 
 
 - Save orders in the hash table as instances of the `OrderCurrency` class.
 
@@ -48,26 +47,25 @@ npm test
 
 ## Race Conditions & Enhancing Fault Tolerance
 
-- To tackle race conditions, this project employs the use of `async-mutex` and the `Async/Await` pattern.
-- Furthermore, the introduction of the `exponentialRetry` function significantly bolsters fault tolerance, thereby improving system availability.
+- I deploy `async-mutex` and the `Async/Await` pattern for race issue.
+-  The `exponentialRetry` function improves fault tolerance and availability.
 
 <details>
      <summary> Details </summary>
 
 
 * 1. Using `async-mutex` for Request Locking and Matching
-   - We utilize the `async-mutex` library to implement locks on requests and matching. This ensures that multiple operations don't interfere with each other, enhancing system stability.
+    We utilize the `async-mutex` library to implement locks on requests and matching. 
 
-* 2. Deploying `Async/Await` in Order Submission as an Array of Objects
-   - We implement asynchronous processing of orders by submitting them as an array of objects. This approach improves concurrency and helps manage order submissions effectively.
+* 2. Deploying `Async/Await` in Order Submission as an Array of Objects. We implement asynchronous processing of orders by submitting them as an array of objects. 
 
 #### Enhancing Fault Tolerance
-To increase the fault tolerance of the system and ensure high availability while preventing excessive network load due to retry requests, we employ the `submitOrdersWithRetry` function. This function retries order submissions when network or connection issues occur.
+To increase the fault tolerance we employ the `submitOrdersWithRetry` function. This function retries and increase waiting time exponentially to avoid too much load on network and allow the server
 
 </details>
 
 ## Orders and Responses
-* Orders adhere to a structured schema, and responses are expected to manifest in three distinct formats.
+* Orders structured schema, and responses are expected to be in three formats.
 
 
 <details>
