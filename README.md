@@ -100,7 +100,7 @@ Your purchase of 50 sell has been successfully completed.
 </details>
 
 ## Errors & Logs
-* To handle error I use logger file, we can log level and log format the errors and save into log file
+* To manage errors, I use a logger file that enables us to specify the log level and log format and saved into a log file.
 
 ## Areas to improve
 * Orders with types like limit, stop-loss, and take-profit, could have specific logic
