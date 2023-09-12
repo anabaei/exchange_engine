@@ -103,3 +103,13 @@ Your purchase of 50 sell has been successfully completed.
 
 ## Errors & Logs
 * To handle error I use logger file, we can log level and log format the errors and save into log file
+
+## Areas to improve
+* Orders type could be `limit`, `stop-loss` and `take-profit` and add appropriate logic for each
+* Take advantage of `grenache-nodejs-ws` 
+* Announce more workers like currency updates
+* Encryp & Decrypt hashed keys
+* Add authentication and userId on orders
+* Devide orders into smaller pieces and allow partial fill 
+* Add `TTL` on orders and handle the logic 
+ 

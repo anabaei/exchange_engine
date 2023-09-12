@@ -14,7 +14,7 @@ function exponentialRetry(fn, maxRetries, baseDelay = 1000) {
           });
       };
   
-      retry(0); // Start with the first attempt
+      retry(0); 
     });
   }
   

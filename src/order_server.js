@@ -25,7 +25,7 @@ service.listen(port);
 const mutex = new Mutex();
 
 setInterval(function () {
-  link.announce('rpc_test', service.port, {});
+  link.announce('rpc_order', service.port, {});
 }, 1000);
 
 service.on('request', async (rid, key, payload, handler) => {

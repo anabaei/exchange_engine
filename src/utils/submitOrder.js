@@ -11,7 +11,7 @@ peer.init();
 
 function submitOrder(order) {
     return new Promise((resolve, reject) => {
-      peer.request('rpc_test', order, { timeout: 10000 }, (err, data) => {
+      peer.request('rpc_order', order, { timeout: 10000 }, (err, data) => {
         if (err) {
           console.error(err.message);
           reject(err); // Reject the Promise with the error
