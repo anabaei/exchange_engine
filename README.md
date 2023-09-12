@@ -27,33 +27,35 @@ npm run start:client
 ```bash
 npm test
 ```
-### Save & Search
-* It save orders in hash table an instance of `OrderCurrency` class. 
+## Saving and Searching Orders
 
-<details>
-     <summary> Details ...</summary>
-
-## Saving Orders in the Hash Table
-
-- Each order is stored in the `orderHashTable` within the `OrderCurrency` class.
-- Every order is assigned a unique hash key based on its characteristics: `side`, `quantity`, and `type`. For instance, "btusell50" signifies a "sell 50 btu" order.
-- Queuing: If a new order arrives with the same key, such as "sell 50 btu," it will join a queue of similar orders.
-
-## Quick Searching with O(1) Complexity
-
-- Searching within the hash table has a time complexity of O(1), indicating high efficiency. You only need to construct a `searchKey` by combining `side`, `quantity`, and `type`.
-- Once a match is found during the search, the order is promptly removed from the `orderHashTable` object.
-
-</details>
-
-### Race Conditions & Fault Tolerance
-* This project address race conditions using  `async-mutex`  and `Async/Await`
-* By creating  `exponentialRetry` function increases the fault tolerance and improve availability 
+- Save orders in the hash table as instances of the `OrderCurrency` class.
 
 <details>
      <summary> Details </summary>
 
- This project addresses them in two ways:
+#### Saving Orders in the Hash Table
+
+- Each order is saved within the `orderHashTable` in the `OrderCurrency` class.
+- Every order receives a distinct hash key determined by its attributes: `side`, `quantity`, and `type`. For example, "btusell50" represents a "sell 50 btu" order.
+- Queuing: When a new order shares the same key, like "sell 50 btu," it will be placed in a queue alongside similar orders.
+
+
+#### Efficient O(1) Search Capability
+
+- Searching within the hash table boasts an impressive time complexity of O(1), signifying remarkable efficiency. All that's required is the creation of a `searchKey` through the combination of `side`, `quantity`, and `type`.
+- As soon as a match is identified during the search, the order is promptly removed from the `orderHashTable` object.
+
+</details>
+
+## Race Conditions & Enhancing Fault Tolerance
+
+- To tackle race conditions, this project employs the use of `async-mutex` and the `Async/Await` pattern.
+- Furthermore, the introduction of the `exponentialRetry` function significantly bolsters fault tolerance, thereby improving system availability.
+
+<details>
+     <summary> Details </summary>
+
 
 * 1. Using `async-mutex` for Request Locking and Matching
    - We utilize the `async-mutex` library to implement locks on requests and matching. This ensures that multiple operations don't interfere with each other, enhancing system stability.
@@ -61,18 +63,19 @@ npm test
 * 2. Deploying `Async/Await` in Order Submission as an Array of Objects
    - We implement asynchronous processing of orders by submitting them as an array of objects. This approach improves concurrency and helps manage order submissions effectively.
 
-### Enhancing Fault Tolerance
+#### Enhancing Fault Tolerance
 To increase the fault tolerance of the system and ensure high availability while preventing excessive network load due to retry requests, we employ the `submitOrdersWithRetry` function. This function retries order submissions when network or connection issues occur.
 
 </details>
 
-### Orders & Response
-* Orders have strucutred schema and reponses are expected to be in 3 formats
+## Orders and Responses
+* Orders adhere to a structured schema, and responses are expected to manifest in three distinct formats.
+
 
 <details>
    <summary> Details </summary>
 
-### Orders
+#### Orders
 * Orders should be structured as objects with the following properties:
 ```javascript
    {
@@ -84,7 +87,7 @@ To increase the fault tolerance of the system and ensure high availability while
     orderType: 'market', 
   }
 ```
-### Output
+#### Output
 * The output messages fall into three main categories when no errors occur:
 * 1- Order Successfully Added to Order Book
 ```bash
